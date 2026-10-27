@@ -1,6 +1,6 @@
 
         :root {
-            /* Colors */
+
             --gov-bg: #ffffff;
             --gov-surface: #f8f9fa;
             --gov-surface-border: #e2e8f0;
@@ -9,12 +9,12 @@
             --gov-text-secondary: #4a5568;
             --gov-text-muted: #718096;
             
-            --gov-primary: #003366;           /* Deep Trust Blue */
+            --gov-primary: #003366;
             --gov-primary-hover: #002244;
             --gov-primary-light: #e6f0fa;
             
             --gov-accent: #003366;
-            --gov-focus: #2b6cb0;             /* Visible focus ring */
+            --gov-focus: #2b6cb0;
             
             --gov-success: #1e7e34;
             --gov-success-bg: #e6f4ea;
@@ -276,7 +276,6 @@
             color: var(--gov-primary);
         }
 
-        /* Checkbox & Forgot Links */
         .gov-form-options {
             display: flex;
             justify-content: space-between;
@@ -372,7 +371,6 @@
             text-decoration: underline;
         }
 
-        /* Print Styles */
         @media print {
             .gov-nav, .gov-btn, .gov-footer {
                 display: none !important;

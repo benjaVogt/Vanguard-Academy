@@ -7,7 +7,7 @@
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="css/styles.css">
 
-    <!-- Header institucional -->
+
     <header class="gov-header">
         <div class="gov-container">
             <a href="#" class="gov-header-brand" aria-label="Ir a la página principal de Vanguard">
@@ -21,7 +21,7 @@
         </div>
     </header>
 
-    <!-- Barra de Navegación -->
+
     <nav class="gov-nav" aria-label="Navegación principal">
         <div class="gov-container">
             <ul class="gov-nav-list">
@@ -33,7 +33,7 @@
         </div>
     </nav>
 
-    <!-- Contenido Principal / Formulario de Login -->
+
     <main class="gov-container">
         <div class="gov-login-wrapper">
 
@@ -44,7 +44,7 @@
                 <p>Ingrese sus credenciales de acceso para entrar al portal educativo.</p>
 
                 <form id="loginForm" action="#" method="POST" novalidate>
-                    <!-- Campo Email -->
+
                     <div class="gov-form-group">
                         <label for="email" class="gov-label">Correo electrónico</label>
                         <div class="gov-hint">Utilice su dirección de correo institucional o personal registrada.</div>
@@ -62,7 +62,7 @@
                         </div>
                     </div>
 
-                    <!-- Campo Contraseña -->
+
                     <div class="gov-form-group">
                         <label for="password" class="gov-label">Contraseña</label>
                         <div class="gov-password-wrapper">
@@ -90,7 +90,7 @@
                         </div>
                     </div>
 
-                    <!-- Opciones de Formulario (Recordarme & Olvidé contraseña) -->
+
                     <div class="gov-form-options">
                         <label class="gov-checkbox-label">
                             <input type="checkbox" id="rememberMe" name="rememberMe">
@@ -99,13 +99,13 @@
                         <a href="#" id="forgotPasswordLink">¿Olvidó su contraseña?</a>
                     </div>
 
-                    <!-- Botón de Envío -->
+
                     <button type="submit" class="gov-btn gov-btn-primary">
                         <i class="fa-solid fa-right-to-bracket" style="margin-right: 0.5rem;"></i> Iniciar sesión
                     </button>
                 </form>
 
-                <!-- Enlace hacia Registro -->
+
                 <p style="text-align: center; font-size: 0.875rem; color: var(--gov-text-muted); margin-top: var(--gov-spacing-lg); margin-bottom: 0;">
                     ¿No tiene una cuenta? <a href="register.html">Regístrese aquí</a>
                 </p>
@@ -113,7 +113,7 @@
         </div>
     </main>
 
-    <!-- Footer Institucional -->
+
     <footer class="gov-footer">
         <div class="gov-container">
             <ul class="gov-footer-links">
@@ -126,7 +126,7 @@
         </div>
     </footer>
 
-    <!-- Lógica JavaScript Interactiva -->
+
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const loginForm = document.getElementById('loginForm');
@@ -143,12 +143,12 @@
             const alertIcon = document.getElementById('alertIcon');
             const forgotPasswordLink = document.getElementById('forgotPasswordLink');
 
-            // 1. Mostrar / Ocultar Contraseña
+
             togglePasswordBtn.addEventListener('click', function() {
                 const isPassword = passwordInput.getAttribute('type') === 'password';
                 passwordInput.setAttribute('type', isPassword ? 'text' : 'password');
                 
-                // Actualizar icono y accesibilidad
+
                 if (isPassword) {
                     toggleIcon.classList.remove('fa-eye');
                     toggleIcon.classList.add('fa-eye-slash');
@@ -160,13 +160,12 @@
                 }
             });
 
-            // 2. Validación de Correo Electrónico
             function validateEmail(email) {
                 const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
                 return re.test(String(email).toLowerCase());
             }
 
-            // Limpiar errores al escribir
+
             emailInput.addEventListener('input', function() {
                 if (emailInput.classList.contains('is-invalid')) {
                     emailInput.classList.remove('is-invalid');
@@ -181,12 +180,12 @@
                 }
             });
 
-            // 3. Manejo del envío de formulario
+
             loginForm.addEventListener('submit', function(e) {
                 e.preventDefault();
                 let isValid = true;
 
-                // Validar Email
+
                 if (!emailInput.value.trim() || !validateEmail(emailInput.value.trim())) {
                     emailInput.classList.add('is-invalid');
                     emailError.style.display = 'flex';
@@ -196,7 +195,7 @@
                     emailError.style.display = 'none';
                 }
 
-                // Validar Contraseña
+
                 if (!passwordInput.value.trim()) {
                     passwordInput.classList.add('is-invalid');
                     passwordError.style.display = 'flex';
@@ -206,11 +205,11 @@
                     passwordError.style.display = 'none';
                 }
 
-                // Acción según el resultado
+  
                 if (isValid) {
                     showAlert('success', 'fa-circle-check', '¡Autenticación exitosa! Redirigiendo al portal...');
                     
-                    // Simulación de respuesta de servidor
+
                     setTimeout(function() {
                         loginForm.reset();
                         toggleIcon.classList.remove('fa-eye-slash');
@@ -222,13 +221,12 @@
                 }
             });
 
-            // 4. Recordatorio para contraseña olvidada
             forgotPasswordLink.addEventListener('click', function(e) {
                 e.preventDefault();
                 showAlert('info', 'fa-circle-info', 'Para restablecer su contraseña, contacte a soporte técnico institucional o consulte la sección de ayuda.');
             });
 
-            // Función auxiliar para mostrar alertas institucionales
+
             function showAlert(type, iconClass, message) {
                 statusAlert.className = `gov-alert gov-alert-${type}`;
                 alertIcon.className = `fa-solid ${iconClass}`;
