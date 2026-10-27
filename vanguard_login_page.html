@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vanguard - Iniciar Sesión</title>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            /* Colors */
+            --gov-bg: #ffffff;
+            --gov-surface: #f8f9fa;
+            --gov-surface-border: #e2e8f0;
+            
+            --gov-text-primary: #1a202c;
+            --gov-text-secondary: #4a5568;
+            --gov-text-muted: #718096;
+            
+            --gov-primary: #003366;           /* Deep Trust Blue */
+            --gov-primary-hover: #002244;
+            --gov-primary-light: #e6f0fa;
+            
+            --gov-accent: #003366;
+            --gov-focus: #2b6cb0;             /* Visible focus ring */
+            
+            --gov-success: #1e7e34;
+            --gov-success-bg: #e6f4ea;
+            --gov-warning: #856404;
+            --gov-warning-bg: #fff3cd;
+            --gov-danger: #b91c1c;
+            --gov-danger-bg: #fef2f2;
+            --gov-info: #0c5460;
+            --gov-info-bg: #d1ecf1;
+
+            /* Typography */
+            --gov-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+            --gov-font-mono: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+
+            /* Spacing compact */
+            --gov-spacing-xs: 0.2rem;
+            --gov-spacing-sm: 0.375rem;
+            --gov-spacing-md: 0.75rem;
+            --gov-spacing-lg: 1rem;
+            --gov-spacing-xl: 1.5rem;
+
+            /* Borders & Shadows */
+            --gov-border-radius: 4px;
+            --gov-border-color: #cbd5e0;
+            --gov-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
+            --gov-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --gov-container-max: 1100px;
+        }
+
+        /* --- Base Reset & Typography --- */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            font-size: 15px;
+            scroll-behavior: smooth;
+            height: 100%;
+        }
+
+        body {
+            font-family: var(--gov-font-family);
+            font-size: 1rem;
+            line-height: 1.5;
+            color: var(--gov-text-primary);
+            background-color: var(--gov-bg);
+            -webkit-font-smoothing: antialiased;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Accessible Focus States */
+        :focus-visible {
+            outline: 2px solid var(--gov-focus) !important;
+            outline-offset: 2px !important;
+            box-shadow: 0 0 0 2px var(--gov-primary-light) !important;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            color: var(--gov-primary);
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: var(--gov-spacing-sm);
+        }
+
+        h1 { 
+            font-size: 1.65rem; 
+            border-bottom: 2px solid var(--gov-primary); 
+            padding-bottom: var(--gov-spacing-xs); 
+        }
+
+        p {
+            margin-bottom: var(--gov-spacing-md);
+            color: var(--gov-text-secondary);
+        }
+
+        a {
+            color: var(--gov-primary);
+            text-decoration: underline;
+            text-underline-offset: 2px;
+            font-weight: 500;
+            transition: color 0.15s ease;
+        }
+
+        a:hover {
+            color: var(--gov-primary-hover);
+        }
+
+        /* --- Layout Containers --- */
+        .gov-container {
+            width: 100%;
+            max-width: var(--gov-container-max);
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: var(--gov-spacing-md);
+            padding-right: var(--gov-spacing-md);
+        }
+
+        main.gov-container {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-top: var(--gov-spacing-xl);
+            padding-bottom: var(--gov-spacing-xl);
+        }
+
+        /* --- Header --- */
+        .gov-header {
+            background: var(--gov-bg);
+            border-bottom: 3px solid var(--gov-primary);
+            padding: 0.75rem 0;
+        }
+
+        .gov-header-brand {
+            display: flex;
+            align-items: center;
+            gap: var(--gov-spacing-sm);
+            text-decoration: none;
+        }
+
+        .gov-header-title {
+            font-size: 1.5rem;
+            color: var(--gov-primary);
+            margin: 0;
+            border: none;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .gov-header-subtitle {
+            font-size: 0.825rem;
+            color: var(--gov-text-muted);
+        }
+
+        /* --- Navigation --- */
+        .gov-nav {
+            background-color: var(--gov-surface);
+            border-bottom: 1px solid var(--gov-border-color);
+        }
+
+        .gov-nav-list {
+            display: flex;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+
+        .gov-nav-item a {
+            display: block;
+            padding: 0.6rem 1rem;
+            color: var(--gov-text-primary);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            border-bottom: 3px solid transparent;
+        }
+
+        .gov-nav-item a:hover,
+        .gov-nav-item a.active {
+            color: var(--gov-primary);
+            background-color: var(--gov-primary-light);
+            border-bottom-color: var(--gov-primary);
+        }
+
+        /* --- Login Card --- */
+        .gov-login-wrapper {
+            width: 100%;
+            max-width: 440px;
+        }
+
+        .gov-card {
+            background-color: var(--gov-bg);
+            border: 1px solid var(--gov-border-color);
+            border-top: 4px solid var(--gov-primary);
+            border-radius: var(--gov-border-radius);
+            padding: 1.75rem;
+            box-shadow: var(--gov-shadow-md);
+        }
+
+        /* --- Form Elements & Password Input Wrapper --- */
+        .gov-form-group {
+            margin-bottom: var(--gov-spacing-md);
+            position: relative;
+        }
+
+        .gov-label {
+            display: block;
+            font-weight: 600;
+            font-size: 0.875rem;
+            margin-bottom: var(--gov-spacing-xs);
+            color: var(--gov-text-primary);
+        }
+
+        .gov-hint {
+            font-size: 0.8rem;
+            color: var(--gov-text-muted);
+            margin-bottom: var(--gov-spacing-xs);
+        }
+
+        .gov-input {
+            width: 100%;
+            padding: 0.6rem 0.75rem;
+            font-size: 0.9375rem;
+            font-family: inherit;
+            color: var(--gov-text-primary);
+            background-color: var(--gov-bg);
+            border: 1px solid var(--gov-border-color);
+            border-radius: var(--gov-border-radius);
+            transition: border-color 0.15s ease;
+        }
+
+        .gov-input:focus {
+            border-color: var(--gov-primary);
+            outline: none;
+        }
+
+        .gov-input.is-invalid {
+            border-color: var(--gov-danger);
+            background-color: #fff8f8;
+        }
+
+        .gov-error-message {
+            color: var(--gov-danger);
+            font-size: 0.775rem;
+            margin-top: 0.25rem;
+            display: none;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        .gov-password-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .gov-password-wrapper .gov-input {
+            padding-right: 2.5rem;
+        }
+
+        .gov-toggle-password {
+            position: absolute;
+            right: 0.5rem;
+            background: none;
+            border: none;
+            color: var(--gov-text-muted);
+            cursor: pointer;
+            padding: 0.4rem 0.5rem;
+            font-size: 0.9rem;
+            border-radius: var(--gov-border-radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .gov-toggle-password:hover {
+            color: var(--gov-primary);
+        }
+
+        /* Checkbox & Forgot Links */
+        .gov-form-options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--gov-spacing-lg);
+            font-size: 0.85rem;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .gov-checkbox-label {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            cursor: pointer;
+            color: var(--gov-text-secondary);
+            user-select: none;
+        }
+
+        .gov-checkbox-label input[type="checkbox"] {
+            accent-color: var(--gov-primary);
+            width: 1rem;
+            height: 1rem;
+            cursor: pointer;
+        }
+
+        /* --- Buttons --- */
+        .gov-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            padding: 0.65rem 1rem;
+            font-family: inherit;
+            font-size: 0.9375rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: var(--gov-border-radius);
+            border: 1px solid transparent;
+            cursor: pointer;
+            transition: background-color 0.15s ease-in-out;
+        }
+
+        .gov-btn-primary {
+            background-color: var(--gov-primary);
+            color: #ffffff;
+        }
+
+        .gov-btn-primary:hover {
+            background-color: var(--gov-primary-hover);
+            color: #ffffff;
+        }
+
+        /* --- Alerts --- */
+        .gov-alert {
+            padding: var(--gov-spacing-sm) var(--gov-spacing-md);
+            margin-bottom: var(--gov-spacing-md);
+            border-left: 4px solid;
+            border-radius: var(--gov-border-radius);
+            font-size: 0.875rem;
+            display: none;
+            align-items: flex-start;
+            gap: 0.5rem;
+        }
+
+        .gov-alert-info { background-color: var(--gov-info-bg); border-color: var(--gov-info); color: var(--gov-info); }
+        .gov-alert-success { background-color: var(--gov-success-bg); border-color: var(--gov-success); color: var(--gov-success); }
+        .gov-alert-danger { background-color: var(--gov-danger-bg); border-color: var(--gov-danger); color: var(--gov-danger); }
+
+        /* --- Footer --- */
+        .gov-footer {
+            background-color: var(--gov-surface);
+            border-top: 2px solid var(--gov-primary);
+            padding: var(--gov-spacing-lg) 0 var(--gov-spacing-md) 0;
+            font-size: 0.85rem;
+        }
+
+        .gov-footer-links {
+            display: flex;
+            gap: var(--gov-spacing-md);
+            list-style: none;
+            flex-wrap: wrap;
+            margin-bottom: var(--gov-spacing-sm);
+        }
+
+        .gov-footer-links a {
+            color: var(--gov-text-secondary);
+            text-decoration: none;
+        }
+
+        .gov-footer-links a:hover {
+            color: var(--gov-primary);
+            text-decoration: underline;
+        }
+
+        /* Print Styles */
+        @media print {
+            .gov-nav, .gov-btn, .gov-footer {
+                display: none !important;
+            }
+            body {
+                background: #ffffff;
+                color: #000000;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header institucional -->
+    <header class="gov-header">
+        <div class="gov-container">
+            <a href="#" class="gov-header-brand" aria-label="Ir a la página principal de Vanguard">
+                <div>
+                    <h1 class="gov-header-title">
+                        <i class="fa-solid fa-graduation-cap"></i> Vanguard
+                    </h1>
+                    <div class="gov-header-subtitle">Portal Oficial Educativo "Vanguard"</div>
+                </div>
+            </a>
+        </div>
+    </header>
+
+    <!-- Barra de Navegación -->
+    <nav class="gov-nav" aria-label="Navegación principal">
+        <div class="gov-container">
+            <ul class="gov-nav-list">
+                <li class="gov-nav-item"><a href="#">Inicio</a></li>
+                <li class="gov-nav-item"><a href="#">Servicios</a></li>
+                <li class="gov-nav-item"><a href="#">Trámites</a></li>
+                <li class="gov-nav-item"><a href="#">Contacto</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Contenido Principal / Formulario de Login -->
+    <main class="gov-container">
+        <div class="gov-login-wrapper">
+
+            <!-- Banner de Alerta para Estado / Feedback -->
+            <div id="statusAlert" class="gov-alert" role="alert">
+                <i id="alertIcon" class="fa-solid fa-circle-info" style="margin-top: 2px;"></i>
+                <div id="alertMessage"></div>
+            </div>
+
+            <div class="gov-card">
+                <h1>Iniciar sesión</h1>
+                <p>Ingrese sus credenciales de acceso para entrar al portal educativo.</p>
+
+                <form id="loginForm" action="#" method="POST" novalidate>
+                    <!-- Campo Email -->
+                    <div class="gov-form-group">
+                        <label for="email" class="gov-label">Correo electrónico</label>
+                        <div class="gov-hint">Utilice su dirección de correo institucional o personal registrada.</div>
+                        <input 
+                            type="email" 
+                            id="email" 
+                            name="email" 
+                            class="gov-input" 
+                            required 
+                            autocomplete="email" 
+                            placeholder="ejemplo@vanguard.edu"
+                        >
+                        <div id="emailError" class="gov-error-message">
+                            <i class="fa-solid fa-circle-exclamation"></i> Por favor, ingrese un correo válido.
+                        </div>
+                    </div>
+
+                    <!-- Campo Contraseña -->
+                    <div class="gov-form-group">
+                        <label for="password" class="gov-label">Contraseña</label>
+                        <div class="gov-password-wrapper">
+                            <input 
+                                type="password" 
+                                id="password" 
+                                name="password" 
+                                class="gov-input" 
+                                required 
+                                autocomplete="current-password"
+                                placeholder="••••••••"
+                            >
+                            <button 
+                                type="button" 
+                                id="togglePasswordBtn" 
+                                class="gov-toggle-password" 
+                                aria-label="Mostrar contraseña"
+                                title="Mostrar u ocultar contraseña"
+                            >
+                                <i class="fa-regular fa-eye" id="toggleIcon"></i>
+                            </button>
+                        </div>
+                        <div id="passwordError" class="gov-error-message">
+                            <i class="fa-solid fa-circle-exclamation"></i> Ingrese su contraseña.
+                        </div>
+                    </div>
+
+                    <!-- Opciones de Formulario (Recordarme & Olvidé contraseña) -->
+                    <div class="gov-form-options">
+                        <label class="gov-checkbox-label">
+                            <input type="checkbox" id="rememberMe" name="rememberMe">
+                            <span>Recordarme</span>
+                        </label>
+                        <a href="#" id="forgotPasswordLink">¿Olvidó su contraseña?</a>
+                    </div>
+
+                    <!-- Botón de Envío -->
+                    <button type="submit" class="gov-btn gov-btn-primary">
+                        <i class="fa-solid fa-right-to-bracket" style="margin-right: 0.5rem;"></i> Iniciar sesión
+                    </button>
+                </form>
+
+                <!-- Enlace hacia Registro -->
+                <p style="text-align: center; font-size: 0.875rem; color: var(--gov-text-muted); margin-top: var(--gov-spacing-lg); margin-bottom: 0;">
+                    ¿No tiene una cuenta? <a href="#">Regístrese aquí</a>
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer Institucional -->
+    <footer class="gov-footer">
+        <div class="gov-container">
+            <ul class="gov-footer-links">
+                <li><a href="#">Política de Privacidad</a></li>
+                <li><a href="#">Términos y Condiciones</a></li>
+                <li><a href="#">Accesibilidad</a></li>
+                <li><a href="#">Contacto institucional</a></li>
+            </ul>
+            <p style="color: var(--gov-text-muted);">&copy; 2026 Vanguard. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Lógica JavaScript Interactiva -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const loginForm = document.getElementById('loginForm');
+            const emailInput = document.getElementById('email');
+            const passwordInput = document.getElementById('password');
+            const emailError = document.getElementById('emailError');
+            const passwordError = document.getElementById('passwordError');
+            
+            const togglePasswordBtn = document.getElementById('togglePasswordBtn');
+            const toggleIcon = document.getElementById('toggleIcon');
+            
+            const statusAlert = document.getElementById('statusAlert');
+            const alertMessage = document.getElementById('alertMessage');
+            const alertIcon = document.getElementById('alertIcon');
+            const forgotPasswordLink = document.getElementById('forgotPasswordLink');
+
+            // 1. Mostrar / Ocultar Contraseña
+            togglePasswordBtn.addEventListener('click', function() {
+                const isPassword = passwordInput.getAttribute('type') === 'password';
+                passwordInput.setAttribute('type', isPassword ? 'text' : 'password');
+                
+                // Actualizar icono y accesibilidad
+                if (isPassword) {
+                    toggleIcon.classList.remove('fa-eye');
+                    toggleIcon.classList.add('fa-eye-slash');
+                    togglePasswordBtn.setAttribute('aria-label', 'Ocultar contraseña');
+                } else {
+                    toggleIcon.classList.remove('fa-eye-slash');
+                    toggleIcon.classList.add('fa-eye');
+                    togglePasswordBtn.setAttribute('aria-label', 'Mostrar contraseña');
+                }
+            });
+
+            // 2. Validación de Correo Electrónico
+            function validateEmail(email) {
+                const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return re.test(String(email).toLowerCase());
+            }
+
+            // Limpiar errores al escribir
+            emailInput.addEventListener('input', function() {
+                if (emailInput.classList.contains('is-invalid')) {
+                    emailInput.classList.remove('is-invalid');
+                    emailError.style.display = 'none';
+                }
+            });
+
+            passwordInput.addEventListener('input', function() {
+                if (passwordInput.classList.contains('is-invalid')) {
+                    passwordInput.classList.remove('is-invalid');
+                    passwordError.style.display = 'none';
+                }
+            });
+
+            // 3. Manejo del envío de formulario
+            loginForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                let isValid = true;
+
+                // Validar Email
+                if (!emailInput.value.trim() || !validateEmail(emailInput.value.trim())) {
+                    emailInput.classList.add('is-invalid');
+                    emailError.style.display = 'flex';
+                    isValid = false;
+                } else {
+                    emailInput.classList.remove('is-invalid');
+                    emailError.style.display = 'none';
+                }
+
+                // Validar Contraseña
+                if (!passwordInput.value.trim()) {
+                    passwordInput.classList.add('is-invalid');
+                    passwordError.style.display = 'flex';
+                    isValid = false;
+                } else {
+                    passwordInput.classList.remove('is-invalid');
+                    passwordError.style.display = 'none';
+                }
+
+                // Acción según el resultado
+                if (isValid) {
+                    showAlert('success', 'fa-circle-check', '¡Autenticación exitosa! Redirigiendo al portal...');
+                    
+                    // Simulación de respuesta de servidor
+                    setTimeout(function() {
+                        loginForm.reset();
+                        toggleIcon.classList.remove('fa-eye-slash');
+                        toggleIcon.classList.add('fa-eye');
+                        passwordInput.setAttribute('type', 'password');
+                    }, 2500);
+                } else {
+                    showAlert('danger', 'fa-circle-exclamation', 'Por favor, revise los campos marcados antes de continuar.');
+                }
+            });
+
+            // 4. Recordatorio para contraseña olvidada
+            forgotPasswordLink.addEventListener('click', function(e) {
+                e.preventDefault();
+                showAlert('info', 'fa-circle-info', 'Para restablecer su contraseña, contacte a soporte técnico institucional o consulte la sección de ayuda.');
+            });
+
+            // Función auxiliar para mostrar alertas institucionales
+            function showAlert(type, iconClass, message) {
+                statusAlert.className = `gov-alert gov-alert-${type}`;
+                alertIcon.className = `fa-solid ${iconClass}`;
+                alertMessage.textContent = message;
+                statusAlert.style.display = 'flex';
+            }
+        });
+    </script>
+</body>
+</html>
