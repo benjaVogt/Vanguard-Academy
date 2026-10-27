@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vanguard - Registro de cuenta</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <header class="gov-header">
+        <div class="gov-container">
+            <a href="#" class="gov-header-brand">
+                <div>
+                    <h1 class="gov-header-title" style="border: none; margin: 0; font-size: 1.5rem;">Vanguard</h1>
+                    <div class="gov-header-subtitle">Portal Oficial Educativo "Vanguard"</div>
+                </div>
+            </a>
+        </div>
+    </header>
+
+    <nav class="gov-nav">
+        <div class="gov-container">
+            <ul class="gov-nav-list">
+                <li class="gov-nav-item"><a href="#">Inicio</a></li>
+                <li class="gov-nav-item"><a href="#">Servicios</a></li>
+                <li class="gov-nav-item"><a href="#">Trámites</a></li>
+                <li class="gov-nav-item"><a href="#">Contacto</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="gov-container" style="margin-top: var(--gov-spacing-xl); margin-bottom: var(--gov-spacing-xl);">
+        <div class="gov-card">
+            <h1>Registro de cuenta</h1>
+            <p>Cree su cuenta oficial para acceder a los servicios de la plataforma.</p>
+
+            <form action="#" method="POST" novalidate>
+                <div class="gov-form-group">
+                    <label for="nombre" class="gov-label">Nombre completo</label>
+                    <input type="text" id="nombre" name="nombre" class="gov-input" required autocomplete="name">
+                </div>
+
+                <div class="gov-form-group">
+                    <label for="email" class="gov-label">Correo electrónico</label>
+                    <div class="gov-hint">Utilice su dirección de correo institucional o personal habitual.</div>
+                    <input type="email" id="email" name="email" class="gov-input" required autocomplete="email">
+                </div>
+
+                <div class="gov-form-group">
+                    <label for="password" class="gov-label">Contraseña</label>
+                    <div class="gov-hint">Debe tener al menos 8 caracteres.</div>
+                    <input type="password" id="password" name="password" class="gov-input" required autocomplete="new-password">
+                </div>
+
+                <div class="gov-form-group">
+                    <label for="confirm-password" class="gov-label">Confirmar contraseña</label>
+                    <input type="password" id="confirm-password" name="confirm-password" class="gov-input" required autocomplete="new-password">
+                </div>
+
+                <button type="submit" class="gov-btn gov-btn-primary">Crear cuenta</button>
+            </form>
+
+            <p style="text-align: center; font-size: 0.875rem; color: var(--gov-text-muted); margin-top: var(--gov-spacing-lg); margin-bottom: 0;">
+                ¿Ya tiene una cuenta? <a href="#">Iniciar sesión</a>
+            </p>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="gov-footer">
+        <div class="gov-container">
+            <ul class="gov-footer-links">
+                <li><a href="#">Política de Privacidad</a></li>
+                <li><a href="#">Términos y Condiciones</a></li>
+                <li><a href="#">Accesibilidad</a></li>
+                <li><a href="#">Contacto institucional</a></li>
+            </ul>
+            <p>&copy; 2026 Vanguard. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
