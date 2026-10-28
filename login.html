@@ -4,25 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vanguard - Iniciar Sesión</title>
-    <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="css/styles.css">
-
+</head>
+<body>
 
     <header class="gov-header">
         <div class="gov-container">
-            <a href="#" class="gov-header-brand" aria-label="Ir a la página principal de Vanguard">
+            <a href="#" class="gov-header-brand">
                 <div>
-                    <h1 class="gov-header-title">
-                        <i class="fa-solid fa-graduation-cap"></i> Vanguard
-                    </h1>
+                    <h1 class="gov-header-title" style="border: none; margin: 0; font-size: 1.5rem;">Vanguard</h1>
                     <div class="gov-header-subtitle">Portal Oficial Educativo "Vanguard"</div>
                 </div>
             </a>
         </div>
     </header>
 
-
-    <nav class="gov-nav" aria-label="Navegación principal">
+    <nav class="gov-nav">
         <div class="gov-container">
             <ul class="gov-nav-list">
                 <li class="gov-nav-item"><a href="#">Inicio</a></li>
@@ -33,86 +30,31 @@
         </div>
     </nav>
 
+    <main class="gov-container" style="margin-top: var(--gov-spacing-xl); margin-bottom: var(--gov-spacing-xl);">
+        <div class="gov-card">
+            <h1>Iniciar sesión</h1>
+            <p>Ingrese sus credenciales de acceso para entrar al portal educativo.</p>
 
-    <main class="gov-container">
-        <div class="gov-login-wrapper">
+            <form action="#" method="POST" novalidate>
+                <div class="gov-form-group">
+                    <label for="email" class="gov-label">Correo electrónico</label>
+                    <div class="gov-hint">Utilice su dirección de correo institucional o personal registrada.</div>
+                    <input type="email" id="email" name="email" class="gov-input" required autocomplete="email">
+                </div>
 
+                <div class="gov-form-group">
+                    <label for="password" class="gov-label">Contraseña</label>
+                    <input type="password" id="password" name="password" class="gov-input" required autocomplete="current-password">
+                </div>
 
+                <button type="submit" class="gov-btn gov-btn-primary">Iniciar sesión</button>
+            </form>
 
-            <div class="gov-card">
-                <h1>Iniciar sesión</h1>
-                <p>Ingrese sus credenciales de acceso para entrar al portal educativo.</p>
-
-                <form id="loginForm" action="#" method="POST" novalidate>
-
-                    <div class="gov-form-group">
-                        <label for="email" class="gov-label">Correo electrónico</label>
-                        <div class="gov-hint">Utilice su dirección de correo institucional o personal registrada.</div>
-                        <input 
-                            type="email" 
-                            id="email" 
-                            name="email" 
-                            class="gov-input" 
-                            required 
-                            autocomplete="email" 
-                            placeholder="ejemplo@vanguard.edu"
-                        >
-                        <div id="emailError" class="gov-error-message">
-                            <i class="fa-solid fa-circle-exclamation"></i> Por favor, ingrese un correo válido.
-                        </div>
-                    </div>
-
-
-                    <div class="gov-form-group">
-                        <label for="password" class="gov-label">Contraseña</label>
-                        <div class="gov-password-wrapper">
-                            <input 
-                                type="password" 
-                                id="password" 
-                                name="password" 
-                                class="gov-input" 
-                                required 
-                                autocomplete="current-password"
-                                placeholder="••••••••"
-                            >
-                            <button 
-                                type="button" 
-                                id="togglePasswordBtn" 
-                                class="gov-toggle-password" 
-                                aria-label="Mostrar contraseña"
-                                title="Mostrar u ocultar contraseña"
-                            >
-                                <i class="fa-regular fa-eye" id="toggleIcon"></i>
-                            </button>
-                        </div>
-                        <div id="passwordError" class="gov-error-message">
-                            <i class="fa-solid fa-circle-exclamation"></i> Ingrese su contraseña.
-                        </div>
-                    </div>
-
-
-                    <div class="gov-form-options">
-                        <label class="gov-checkbox-label">
-                            <input type="checkbox" id="rememberMe" name="rememberMe">
-                            <span>Recordarme</span>
-                        </label>
-                        <a href="#" id="forgotPasswordLink">¿Olvidó su contraseña?</a>
-                    </div>
-
-
-                    <button type="submit" class="gov-btn gov-btn-primary">
-                        <i class="fa-solid fa-right-to-bracket" style="margin-right: 0.5rem;"></i> Iniciar sesión
-                    </button>
-                </form>
-
-
-                <p style="text-align: center; font-size: 0.875rem; color: var(--gov-text-muted); margin-top: var(--gov-spacing-lg); margin-bottom: 0;">
-                    ¿No tiene una cuenta? <a href="register.html">Regístrese aquí</a>
-                </p>
-            </div>
+            <p style="text-align: center; font-size: 0.875rem; color: var(--gov-text-muted); margin-top: var(--gov-spacing-lg); margin-bottom: 0;">
+                ¿No tiene una cuenta? <a href="register.html">Regístrese aquí</a>
+            </p>
         </div>
     </main>
-
 
     <footer class="gov-footer">
         <div class="gov-container">
@@ -122,118 +64,9 @@
                 <li><a href="#">Accesibilidad</a></li>
                 <li><a href="#">Contacto institucional</a></li>
             </ul>
-            <p style="color: var(--gov-text-muted);">&copy; 2026 Vanguard. Todos los derechos reservados.</p>
+            <p>&copy; 2026 Vanguard. Todos los derechos reservados.</p>
         </div>
     </footer>
 
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const loginForm = document.getElementById('loginForm');
-            const emailInput = document.getElementById('email');
-            const passwordInput = document.getElementById('password');
-            const emailError = document.getElementById('emailError');
-            const passwordError = document.getElementById('passwordError');
-            
-            const togglePasswordBtn = document.getElementById('togglePasswordBtn');
-            const toggleIcon = document.getElementById('toggleIcon');
-            
-            const statusAlert = document.getElementById('statusAlert');
-            const alertMessage = document.getElementById('alertMessage');
-            const alertIcon = document.getElementById('alertIcon');
-            const forgotPasswordLink = document.getElementById('forgotPasswordLink');
-
-
-            togglePasswordBtn.addEventListener('click', function() {
-                const isPassword = passwordInput.getAttribute('type') === 'password';
-                passwordInput.setAttribute('type', isPassword ? 'text' : 'password');
-                
-
-                if (isPassword) {
-                    toggleIcon.classList.remove('fa-eye');
-                    toggleIcon.classList.add('fa-eye-slash');
-                    togglePasswordBtn.setAttribute('aria-label', 'Ocultar contraseña');
-                } else {
-                    toggleIcon.classList.remove('fa-eye-slash');
-                    toggleIcon.classList.add('fa-eye');
-                    togglePasswordBtn.setAttribute('aria-label', 'Mostrar contraseña');
-                }
-            });
-
-            function validateEmail(email) {
-                const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                return re.test(String(email).toLowerCase());
-            }
-
-
-            emailInput.addEventListener('input', function() {
-                if (emailInput.classList.contains('is-invalid')) {
-                    emailInput.classList.remove('is-invalid');
-                    emailError.style.display = 'none';
-                }
-            });
-
-            passwordInput.addEventListener('input', function() {
-                if (passwordInput.classList.contains('is-invalid')) {
-                    passwordInput.classList.remove('is-invalid');
-                    passwordError.style.display = 'none';
-                }
-            });
-
-
-            loginForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                let isValid = true;
-
-
-                if (!emailInput.value.trim() || !validateEmail(emailInput.value.trim())) {
-                    emailInput.classList.add('is-invalid');
-                    emailError.style.display = 'flex';
-                    isValid = false;
-                } else {
-                    emailInput.classList.remove('is-invalid');
-                    emailError.style.display = 'none';
-                }
-
-
-                if (!passwordInput.value.trim()) {
-                    passwordInput.classList.add('is-invalid');
-                    passwordError.style.display = 'flex';
-                    isValid = false;
-                } else {
-                    passwordInput.classList.remove('is-invalid');
-                    passwordError.style.display = 'none';
-                }
-
-  
-                if (isValid) {
-                    showAlert('success', 'fa-circle-check', '¡Autenticación exitosa! Redirigiendo al portal...');
-                    
-
-                    setTimeout(function() {
-                        loginForm.reset();
-                        toggleIcon.classList.remove('fa-eye-slash');
-                        toggleIcon.classList.add('fa-eye');
-                        passwordInput.setAttribute('type', 'password');
-                    }, 2500);
-                } else {
-                    showAlert('danger', 'fa-circle-exclamation', 'Por favor, revise los campos marcados antes de continuar.');
-                }
-            });
-
-            forgotPasswordLink.addEventListener('click', function(e) {
-                e.preventDefault();
-                showAlert('info', 'fa-circle-info', 'Para restablecer su contraseña, contacte a soporte técnico institucional o consulte la sección de ayuda.');
-            });
-
-
-            function showAlert(type, iconClass, message) {
-                statusAlert.className = `gov-alert gov-alert-${type}`;
-                alertIcon.className = `fa-solid ${iconClass}`;
-                alertMessage.textContent = message;
-                statusAlert.style.display = 'flex';
-            }
-        });
-    </script>
 </body>
 </html>
