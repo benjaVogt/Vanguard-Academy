@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vanguard - Classes</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <header class="gov-header">
+        <div class="gov-container">
+            <a href="index.html" class="gov-header-brand">
+                <h1 class="gov-header-title">Vanguard</h1>
+            </a>
+        </div>
+    </header>
+
+    <div class="gov-container" style="display: flex; gap: var(--gov-spacing-md); margin-top: var(--gov-spacing-lg);">
+        <!-- Sidebar Navigation -->
+        <aside style="width: 280px; flex-shrink: 0;">
+            <nav class="gov-nav" style="border: 1px solid var(--gov-border-color); border-radius: var(--gov-border-radius);">
+                <ul class="gov-nav-list" style="flex-direction: column;">
+                    <li class="gov-nav-item"><a href="index.html">HOME</a></li>
+                    <li class="gov-nav-item"><a href="newsbox.html">NEWS BOX</a></li>
+                    <li class="gov-nav-item"><a href="classes.html" class="active">CLASSES</a></li>
+                </ul>
+            </nav>
+
+            <div class="gov-card" style="margin-top: 1rem; padding: 0.75rem;">
+                <div style="border-bottom: 1px solid var(--gov-surface-border); padding-bottom: 0.5rem; margin-bottom: 0.5rem;">
+                    <strong>SUBJECT</strong>
+                    <p class="gov-hint" style="margin: 0;">Description</p>
+                </div>
+                <div style="border-bottom: 1px solid var(--gov-surface-border); padding-bottom: 0.5rem; margin-bottom: 0.5rem;">
+                    <strong>SUBJECT</strong>
+                    <p class="gov-hint" style="margin: 0;">Description</p>
+                </div>
+                <div>
+                    <strong>SUBJECT</strong>
+                    <p class="gov-hint" style="margin: 0;">Description</p>
+                </div>
+            </div>
+
+            <div style="margin-top: 2rem;">
+                <a href="profile.html" class="gov-btn gov-btn-secondary">SETTINGS</a>
+            </div>
+        </aside>
+
+        <!-- Main View Placeholder -->
+        <main style="flex: 1;">
+            <div class="gov-card">
+                <h2>Class Details</h2>
+                <p>Selecciona una asignatura del menú lateral para ver el contenido detallado.</p>
+            </div>
+        </main>
+    </div>
+
+    <footer class="gov-footer">
+        <div class="gov-container">
+            <ul class="gov-footer-links">
+                <li><a href="#">Ayuda</a></li>
+                <li><a href="#">Términos y Condiciones</a></li>
+            </ul>
+        </div>
+    </footer>
+
+</body>
+</html>
