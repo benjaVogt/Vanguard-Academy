@@ -754,6 +754,25 @@ a:hover {
 }
 
 
+.gov-brand-title {
+  border: none;
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.gov-main-spacing {
+  margin-top: var(--gov-spacing-xl);
+  margin-bottom: var(--gov-spacing-xl);
+}
+
+.gov-register-prompt {
+  text-align: center;
+  font-size: 0.875rem;
+  color: var(--gov-text-muted);
+  margin-top: var(--gov-spacing-lg);
+  margin-bottom: 0;
+}
+
 html, body {
   height: 100%;
 }
