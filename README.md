@@ -1,4 +1,1 @@
-Vanguard is a classroom-like website made for a school project.
-Is currently on progress.
-Made with this stack: HTML, CSS, PHP.
-BouzGOAT
+Vanguard es un classrom-lite hecho para un proyecto de base de datos, creado por Gallego, Vogt y Rueda. El stack es HTML, PHP, CSS.
